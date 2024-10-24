@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Poppins', sans-serif;
+}
+
+a {
+   text-decoration: none !important;
+}
+
+img {
+   height: 100%;
+   width: 100%;
+}
+
+body {
+   font-family: 'Poppins', sans-serif;
+}
+
+/* default css for the  headings */
+
+h3 {
+   font-size: clamp(20px, 3vw, 24px);
+}
+
+input {
+   outline: none;
+}
+
+/* custom css starts from here  */
+
+/*  for hiding the scrollbar */
+
+.hide_scrollbar {
+   scrollbar-width: none;
+}
+
+.section_custom_height {
+   min-height: calc(100vh - 80px);
+}
+
+/* custom css ends  here  */
+
+@layer base {
+   h1 {
+      @apply text-4xl sm:text-6xl;
+   }
+
+   h2 {
+      @apply text-4xl;
+   }
+
+   p {
+      @apply text-sm;
+   }
+
+   input {
+      @apply text-base  w-full;
+   }
+}
+
+@layer utilities {
+   .custom_container {
+      @apply container mx-auto  px-[8%];
+   }
+
+   .flex_center {
+      @apply flex justify-center items-center;
+   }
+
+   .flex_between {
+      @apply flex justify-between items-center;
+   }
+
+   .custom_input {
+      @apply w-full border border-gray-200 text-sm py-2 pl-4 rounded-md;
+   }
+   .custom_form {
+      @apply max-w-[400px] min-h-[500px] mx-auto text-lg p-10 sm:p-14 space-y-8;
+   }
+
+   .btn {
+      @apply bg-main_clr text-white text-sm py-3 px-8 rounded-lg  capitalize cursor-pointer hover:bg-main_clr/80 transition-all duration-300 ease-in-out;
+   }
+
+   .grayBtn {
+      @apply text-xs bg-gray-100 py-3 px-8 rounded-md transition-all duration-300 ease-in-out;
+   }
+
+   .section {
+      @apply custom_container section_custom_height  flex_center;
+   }
+}
+
+.active_nav_link::before,
+.nav_link::before {
+   content: '';
+   position: absolute;
+   top: 130%;
+   bottom: 0px;
+   left: 50%; /* Start from the center */
+   transform: translateX(-50%); /* Center the element */
+   width: 0%;
+   height: 2px;
+   background: #3e64ff;
+   transition: all 0.3s ease-in-out;
+}
+
+.active_nav_link:hover::before,
+.nav_link:hover::before {
+   width: 90%;
+}
